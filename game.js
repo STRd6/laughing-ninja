@@ -15550,7 +15550,7 @@ THREE.Matrix3.prototype = {
 
 			if ( throwOnInvertible || false ) {
 
-				throw new Error( msg ); 
+				throw new Error( msg );
 
 			} else {
 
@@ -16192,7 +16192,7 @@ THREE.Matrix4.prototype = {
 
 			if ( throwOnInvertible || false ) {
 
-				throw new Error( msg ); 
+				throw new Error( msg );
 
 			} else {
 
@@ -20974,7 +20974,7 @@ THREE.PerspectiveCamera.prototype.updateProjectionMatrix = function () {
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/
  */
- 
+
 THREE.Light = function ( hex ) {
 
 	THREE.Object3D.call( this );
@@ -38977,7 +38977,7 @@ THREE.FontUtils = {
 
 THREE.FontUtils.generateShapes = function( text, parameters ) {
 
-	// Parameters 
+	// Parameters
 
 	parameters = parameters || {};
 
@@ -39967,7 +39967,7 @@ THREE.CurvePath = function () {
 
 	this.curves = [];
 	this.bends = [];
-	
+
 	this.autoClose = false; // Automatically closes the path
 };
 
@@ -39991,11 +39991,11 @@ THREE.CurvePath.prototype.closePath = function() {
 	// Add a line curve if start and end of lines are not connected
 	var startPoint = this.curves[0].getPoint(0);
 	var endPoint = this.curves[this.curves.length-1].getPoint(1);
-	
+
 	if (!startPoint.equals(endPoint)) {
 		this.curves.push( new THREE.LineCurve(endPoint, startPoint) );
 	}
-	
+
 };
 
 // To get accurate point with reference to
@@ -40481,14 +40481,14 @@ THREE.Path.prototype.arc = function ( aX, aY, aRadius,
 
 	this.absarc(aX + x0, aY + y0, aRadius,
 		aStartAngle, aEndAngle, aClockwise );
-	
+
  };
 
  THREE.Path.prototype.absarc = function ( aX, aY, aRadius,
 									  aStartAngle, aEndAngle, aClockwise ) {
 	this.absellipse(aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise);
  };
- 
+
 THREE.Path.prototype.ellipse = function ( aX, aY, xRadius, yRadius,
 									  aStartAngle, aEndAngle, aClockwise ) {
 
@@ -40500,7 +40500,7 @@ THREE.Path.prototype.ellipse = function ( aX, aY, xRadius, yRadius,
 		aStartAngle, aEndAngle, aClockwise );
 
  };
- 
+
 
 THREE.Path.prototype.absellipse = function ( aX, aY, xRadius, yRadius,
 									  aStartAngle, aEndAngle, aClockwise ) {
@@ -40715,7 +40715,7 @@ THREE.Path.prototype.getPoints = function( divisions, closedPath ) {
 			//console.log(points);
 
 		  break;
-		  
+
 		case THREE.PathActions.ELLIPSE:
 
 			var aX = args[ 0 ], aY = args[ 1 ],
@@ -42213,7 +42213,7 @@ THREE.KeyFrameAnimation.prototype.stop = function() {
 	// reset JIT matrix and remove cache
 
 	for ( var h = 0; h < this.data.hierarchy.length; h++ ) {
-        
+
         var obj = this.hierarchy[ h ];
 		var node = this.data.hierarchy[ h ];
 
@@ -43997,7 +43997,7 @@ THREE.ShapeGeometry.prototype.addShape = function ( shape, options ) {
  * @author bhouston / http://exocortex.com
  */
 
-// points - to create a closed torus, one must use a set of points 
+// points - to create a closed torus, one must use a set of points
 //    like so: [ a, b, c, d, a ], see first is the same as last.
 // segments - the number of circumference segments to create
 // phiStart - the starting radian
@@ -44058,7 +44058,7 @@ THREE.LatheGeometry = function ( points, segments, phiStart, phiLength ) {
 
 			this.faceVertexUvs[ 0 ].push( [
 
-				new THREE.Vector2( u0, v0 ), 
+				new THREE.Vector2( u0, v0 ),
 				new THREE.Vector2( u1, v0 ),
 				new THREE.Vector2( u1, v1 ),
 				new THREE.Vector2( u0, v1 )
@@ -45135,11 +45135,11 @@ THREE.ParametricGeometry = function ( func, slices, stacks, useTris ) {
 THREE.ParametricGeometry.prototype = Object.create( THREE.Geometry.prototype );
 /**
  * @author qiao / https://github.com/qiao
- * @fileoverview This is a convex hull generator using the incremental method. 
+ * @fileoverview This is a convex hull generator using the incremental method.
  * The complexity is O(n^2) where n is the number of vertices.
  * O(nlogn) algorithms do exist, but they are much more complicated.
  *
- * Benchmark: 
+ * Benchmark:
  *
  *  Platform: CPU: P7350 @2.00GHz Engine: V8
  *
@@ -45156,7 +45156,7 @@ THREE.ConvexGeometry = function( vertices ) {
 
 	THREE.Geometry.call( this );
 
-	var faces = [ [ 0, 1, 2 ], [ 0, 2, 1 ] ]; 
+	var faces = [ [ 0, 1, 2 ], [ 0, 2, 1 ] ];
 
 	for ( var i = 3; i < vertices.length; i++ ) {
 
@@ -45225,7 +45225,7 @@ THREE.ConvexGeometry = function( vertices ) {
 		// construct the new faces formed by the edges of the hole and the vertex
 		for ( var h = 0; h < hole.length; h++ ) {
 
-			faces.push( [ 
+			faces.push( [
 				hole[ h ][ 0 ],
 				hole[ h ][ 1 ],
 				vertexId
@@ -45248,7 +45248,7 @@ THREE.ConvexGeometry = function( vertices ) {
 		// distance from face to origin
 		var dist = n.dot( va );
 
-		return n.dot( vertex ) >= dist; 
+		return n.dot( vertex ) >= dist;
 
 	}
 
@@ -45277,7 +45277,7 @@ THREE.ConvexGeometry = function( vertices ) {
 	 */
 	function equalEdge( ea, eb ) {
 
-		return ea[ 0 ] === eb[ 1 ] && ea[ 1 ] === eb[ 0 ]; 
+		return ea[ 0 ] === eb[ 1 ] && ea[ 1 ] === eb[ 0 ];
 
 	}
 
@@ -45327,7 +45327,7 @@ THREE.ConvexGeometry = function( vertices ) {
 	// Convert faces into instances of THREE.Face3
 	for ( var i = 0; i < faces.length; i++ ) {
 
-		this.faces.push( new THREE.Face3( 
+		this.faces.push( new THREE.Face3(
 				faces[ i ][ 0 ],
 				faces[ i ][ 1 ],
 				faces[ i ][ 2 ]
@@ -45434,7 +45434,7 @@ THREE.ArrowHelper.prototype.setDirection = function ( dir ) {
     if ( d.y > 0.999 ) {
 
         this.rotation.set( 0, 0, 0 );
- 
+
     } else if ( d.y < - 0.999 ) {
 
         this.rotation.set( Math.PI, 0, 0 );
@@ -47899,7 +47899,207 @@ THREE.ShaderSprite = {
 
 };
 // Generated by CoffeeScript 1.4.0
-var animate, camera, cameraTarget, cubeData, engine, findTextures, geometry, init, material, materials, n, renderer, scene, size, stats, testImageUrl, textureLookup, textures, _ref;
+var GameState, Map, cubeData, height, renderer, stats, width;
+
+cubeData = ["G G D D D D G G\nG G D D D D G G\nD D D D D D D D\nD D D D D D D D\nD D D D D D D D\nD D D D D D D D\nG G D D D D G G\nG G D D D D G G", "- - - - - - - P\n- - P - - - - -\n- - - W - - P -\n- - - - - P - -\n- P - - - - - -\n- - - - P - - -\n- - - P - - - -\nP - - - - - - -", "- - - - - - - -\n- - - - - - - -\n- - - W - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -"].map(function(plane) {
+  return plane.split("\n").map(function(row) {
+    return row.split(" ");
+  });
+});
+
+Map = function(I) {
+  var findTextures, init, materials, n, testImageUrl, textureLookup, textures;
+  if (I == null) {
+    I = {};
+  }
+  Object.defaults(I, {
+    x: App.width / 2,
+    y: App.height / 2,
+    height: App.height,
+    width: App.width,
+    size: 8
+  });
+  findTextures = function(key) {
+    if (key === '-') {
+      return;
+    }
+    return [].concat(textureLookup[key]).map(function(textureIndex) {
+      return materials[textureIndex];
+    }).wrap(0, 6);
+  };
+  textureLookup = {
+    D: 2,
+    G: [77, 77, 78, 2, 77, 77],
+    P: [118, 118, 102, 118, 119, 118],
+    W: [20, 20, 21, 21, 20, 20]
+  };
+  testImageUrl = ResourceLoader.urlFor("images", "terrain");
+  textures = [];
+  materials = [];
+  n = 16;
+  n.times(function(y) {
+    return n.times(function(x) {
+      var texture;
+      texture = THREE.ImageUtils.loadTexture(testImageUrl);
+      texture.offset.x = (1 / n) * x;
+      texture.offset.y = (1 / n) * ((n - 1) - y);
+      texture.repeat.x = 1 / n;
+      texture.repeat.y = 1 / n;
+      return textures.push(texture);
+    });
+  });
+  init = function() {
+    materials = textures.map(function(texture) {
+      return new THREE.MeshBasicMaterial({
+        wireframe: false,
+        map: texture
+      });
+    });
+    return cubeData.each(function(plane, y) {
+      return plane.each(function(row, z) {
+        return row.each(function(c, x) {
+          var cube, geometry, surfaceTextures;
+          if (surfaceTextures = findTextures(c)) {
+            geometry = new THREE.CubeGeometry(I.size, I.size, I.size, 1, 1, 1);
+            cube = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(surfaceTextures));
+            cube.position.y = I.size * (y - 4);
+            cube.position.x = I.size * (x - 4);
+            cube.position.z = I.size * (z - 4);
+            return engine.scene().add(cube);
+          }
+        });
+      });
+    });
+  };
+  return init();
+};
+
+GameObject.ThreeD = function(I, self) {
+  if (I == null) {
+    I = {};
+  }
+  Object.defaults(I, {
+    size: 10
+  });
+  self.on('update', function() {
+    I.mesh.geometry.vertices[0].set(I.x, I.y, I.z);
+    return I.mesh.geometry.verticesNeedUpdate = true;
+  });
+  return {
+    mesh: function() {
+      var material, texture;
+      texture = THREE.ImageUtils.loadTexture(ResourceLoader.urlFor("images", I.spriteName));
+      material = new THREE.ParticleBasicMaterial({
+        size: I.size,
+        depthFalse: false,
+        transparent: true,
+        map: texture
+      });
+      I.geometry = new THREE.Geometry();
+      I.geometry.vertices.push(new THREE.Vector3(I.x, I.y, I.z));
+      I.mesh = new THREE.ParticleSystem(I.geometry, material);
+      return I.mesh;
+    }
+  };
+};
+
+GameState = function(I) {
+  var queuedObjects, self;
+  if (I == null) {
+    I = {};
+  }
+  Object.reverseMerge(I, {
+    objects: []
+  });
+  queuedObjects = [];
+  self = Core(I).extend({
+    /**
+    The add method creates and adds an object to the game world. Two
+    other events are triggered around this one: beforeAdd and afterAdd.
+    
+        # you can add arbitrary entityData and
+        # the engine will make it into a GameObject
+        engine.add 
+          x: 50
+          y: 30
+          color: "red"
+    
+        player = engine.add
+          class: "Player"
+    
+    @name add
+    @methodOf Engine#
+    @param {Object} entityData The data used to create the game object.
+    @returns {GameObject}
+    */
+
+    add: function(entityData) {
+      var object;
+      self.trigger("beforeAdd", entityData);
+      object = GameObject.construct(entityData);
+      object.create();
+      self.trigger("afterAdd", object);
+      if (I.updating) {
+        queuedObjects.push(object);
+      } else {
+        I.objects.push(object);
+      }
+      return object;
+    },
+    objects: function() {
+      return I.objects.copy();
+    }
+  });
+  self.bind("update", function(elapsedTime) {
+    var toKeep, toRemove, _ref;
+    I.updating = true;
+    I.objects.invoke("trigger", "beforeUpdate", elapsedTime);
+    _ref = I.objects.partition(function(object) {
+      return object.update(elapsedTime);
+    }), toKeep = _ref[0], toRemove = _ref[1];
+    I.objects.invoke("trigger", "afterUpdate", elapsedTime);
+    toRemove.invoke("trigger", "remove");
+    I.objects = toKeep.concat(queuedObjects);
+    queuedObjects = [];
+    return I.updating = false;
+  });
+  self.include("GameState.ThreeD");
+  return self;
+};
+
+GameState.ThreeD = function(I, self) {
+  var camera, cameraTarget, height, scene, width;
+  if (I == null) {
+    I = {};
+  }
+  width = App.width, height = App.height;
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(75, width / height, 1, 10000);
+  camera.position.z = 100;
+  camera.position.y = 25;
+  camera.position.x = 0;
+  cameraTarget = new THREE.Vector3(0, 0, 0);
+  self.on("draw", function(canvas) {
+    return canvas.render(scene, camera);
+  });
+  self.on('afterAdd', function(obj) {
+    return scene.add(obj.mesh());
+  });
+  self.bind("update", function() {
+    return camera.lookAt(cameraTarget);
+  });
+  return {
+    pan: function(delta) {
+      return ["x", "y", "z"].each(function(d) {
+        camera.position[d] += delta[d];
+        return cameraTarget[d] += delta[d];
+      });
+    },
+    scene: scene
+  };
+};
+
+GameObject.defaultModules = GameObject.defaultModules.without(['Drawable']).concat(['GameObject.ThreeD']);
 
 stats = xStats({
   width: 200,
@@ -47912,118 +48112,42 @@ $(stats.element).css({
   top: 0
 }).appendTo("body");
 
-_ref = [], camera = _ref[0], scene = _ref[1], renderer = _ref[2], geometry = _ref[3], material = _ref[4];
+width = App.width, height = App.height;
 
-size = 8;
-
-findTextures = function(key) {
-  if (key === '-') {
-    return;
-  }
-  return [].concat(textureLookup[key]).map(function(textureIndex) {
-    return materials[textureIndex];
-  }).wrap(0, 6);
-};
-
-textureLookup = {
-  D: 2,
-  G: [77, 77, 78, 2, 77, 77],
-  P: [118, 118, 102, 118, 119, 118],
-  W: [20, 20, 21, 21, 20, 20]
-};
-
-cubeData = ["G G D D D D G G\nG G D D D D G G\nD D D D D D D D\nD D D D D D D D\nD D D D D D D D\nD D D D D D D D\nG G D D D D G G\nG G D D D D G G", "- - - - - - - P\n- - P - - - - -\n- - - W - - P -\n- - - - - P - -\n- P - - - - - -\n- - - - P - - -\n- - - P - - - -\nP - - - - - - -", "- - - - - - - -\n- - - - - - - -\n- - - W - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -\n- - - - - - - -"].map(function(plane) {
-  return plane.split("\n").map(function(row) {
-    return row.split(" ");
-  });
+renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  canvas: $('canvas').get(0)
 });
 
-$("canvas").remove();
+renderer.setSize(width, height);
 
-testImageUrl = ResourceLoader.urlFor("images", "terrain");
+Engine.defaultModules.push("Gamepads");
 
-textures = [];
-
-materials = [];
-
-n = 16;
-
-n.times(function(y) {
-  return n.times(function(x) {
-    var texture;
-    texture = THREE.ImageUtils.loadTexture(testImageUrl);
-    texture.offset.x = (1 / n) * x;
-    texture.offset.y = (1 / n) * ((n - 1) - y);
-    texture.repeat.x = 1 / n;
-    texture.repeat.y = 1 / n;
-    return textures.push(texture);
-  });
-});
-
-init = function() {
-  var height, width;
-  width = App.width, height = App.height;
-  camera = new THREE.PerspectiveCamera(75, width / height, 1, 10000);
-  camera.position.z = 100;
-  camera.position.y = 25;
-  camera.position.x = 0;
-  scene = new THREE.Scene();
-  materials = textures.map(function(texture) {
-    return new THREE.MeshBasicMaterial({
-      wireframe: false,
-      map: texture,
-      overdraw: true
-    });
-  });
-  cubeData.each(function(plane, y) {
-    return plane.each(function(row, z) {
-      return row.each(function(c, x) {
-        var cube, surfaceTextures;
-        if (surfaceTextures = findTextures(c)) {
-          geometry = new THREE.CubeGeometry(size, size, size, 1, 1, 1);
-          cube = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(surfaceTextures));
-          cube.position.y = size * (y - 4);
-          cube.position.x = size * (x - 4);
-          cube.position.z = size * (z - 4);
-          return scene.add(cube);
-        }
-      });
-    });
-  });
-  renderer = new THREE.WebGLRenderer({
-    antialias: true
-  });
-  renderer.setSize(width, height);
-  return document.body.appendChild(renderer.domElement);
-};
-
-animate = function() {
-  requestAnimationFrame(animate);
-  return renderer.render(scene, camera);
-};
-
-init();
-
-animate();
-
-engine = Engine();
-
-cameraTarget = new THREE.Vector3(0, 0, 0);
-
-engine.bind("update", function() {
-  if (keydown.right) {
-    camera.position.x += 1;
-  }
-  if (keydown.left) {
-    camera.position.x -= 1;
-  }
-  if (keydown.up) {
-    camera.position.y += 1;
-  }
-  if (keydown.down) {
-    camera.position.y -= 1;
-  }
-  return camera.lookAt(cameraTarget);
+window.engine = Engine({
+  canvas: renderer,
+  clear: false,
+  backgroundColor: null
 });
 
 engine.start();
+
+engine.on("update", function(dt) {
+  var cameraSpeed, p;
+  cameraSpeed = 100;
+  p = engine.controller(0).position(1).scale(cameraSpeed * dt);
+  return engine.pan({
+    x: p.x,
+    y: 0,
+    z: p.y
+  });
+});
+
+engine.scene = function() {
+  return engine.I.currentState.scene;
+};
+
+engine.pan = function(delta) {
+  return engine.I.currentState.pan(delta);
+};
+
+Map();
