@@ -26,3 +26,4 @@ GameState.ThreeD = (I={}, self) ->
       cameraTarget[d] += delta[d]
 
   scene: scene
+  camera: camera
